@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Simple Inventory API
+  description: This is a simple API
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/csn_ddi/Temp_API/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: developers
+  description: Operations available to regular developers
+paths:
+  /temperature:
+    get:
+      tags:
+      - developers
+      summary: returns temperature reading of sensor on raspi
+      description: |
+        You can get an actual reading of the current temperature from the sensor connected to the raspi
+      operationId: read_temperature
+      responses:
+        "200":
+          description: current temp reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemperatureItem'
+        "400":
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
+components:
+  schemas:
+    TemperatureItem:
+      required:
+      - temperature
+      type: object
+      properties:
+        temperature:
+          type: integer
+          example: 1
+      example:
+        temperature: 1
+

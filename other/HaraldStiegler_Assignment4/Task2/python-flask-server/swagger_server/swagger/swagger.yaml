@@ -1,0 +1,59 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a sample server for reading temperature values."
+  version: "1.0.0"
+  title: "Temperature server"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost"
+basePath: "/v2"
+tags:
+- name: "temp"
+  description: "Get your personal temperature"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+paths:
+  /getTemperature:
+    get:
+      tags:
+      - "temperature"
+      summary: "Reads temperature from local sensor and returns value"
+      description: "Reads temperature from local sensor and returns value"
+      operationId: "get_temperature"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "string"
+        "500":
+          description: "Internal error when reading temperature value"
+      x-swagger-router-controller: "swagger_server.controllers.temperature_controller"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions: {}
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

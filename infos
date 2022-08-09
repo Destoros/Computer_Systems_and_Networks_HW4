@@ -1,0 +1,4 @@
+1) download raspbian from raspberry website https://www.raspberrypi.org/downloads/raspbian/
+2) flash it with the program balena etcher
+3) connect raspiban via hdmi to montior adn connect mosue and keyboard
+4) install xrdp to allow Windows "Remotedesktopverbindung" to connect to the raspbian via the local network and control it form main desktop
